@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion 25
+  buildToolsVersion "23.0.2"
+  defaultConfig {
+    applicationId "com.rxkj.haixiangou"
+    minSdkVersion 14
+    targetSdkVersion 25
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  // 签名信息
+  signingConfigs {
+    Config {
+      // 绝对路径或相对路径
+      storeFile file("haixiangou.keystore")
+      storePassword "haixiangou"
+      keyAlias "haixiangou"
+      keyPassword "haixiangou"
+      v2SigningEnabled false
+    }
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+    release {
+      buildConfigField "int", "envType", "0"
+      signingConfig signingConfigs.Config
+      shrinkResources false
+      minifyEnabled true
+      proguardFile 'proguard-project.pro'
+    }
+
+    debugQA {
+      buildConfigField "int", "envType", "100 "
+      signingConfig signingConfigs.Config
+      debuggable false
+      shrinkResources false
+      minifyEnabled true
+      proguardFile 'proguard-project.pro'
+    }
+    debugDev {
+      buildConfigField "int", "envType", "200"
+      signingConfig signingConfigs.Config
+      debuggable true
+    }
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+  compile 'com.android.support:appcompat-v7:25.0.0'
+  compile 'com.android.support:support-v4:25.0.0'
+  testCompile 'junit:junit:4.12'
+
+  compile 'com.jakewharton:butterknife:7.0.1'
+  compile 'io.reactivex:rxandroid:1.0.1'
+  compile 'com.squareup.retrofit2:retrofit:2.0.1'
+  compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+  compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
+  compile 'com.squareup.okhttp3:okhttp:3.0.1'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
+  compile 'com.facebook.stetho:stetho-okhttp3:1.3.0'
+  compile 'com.facebook.stetho:stetho:1.3.0'
+  compile 'com.android.support:cardview-v7:25.0.0'
+  compile 'com.squareup.picasso:picasso:2.5.2'
+  compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
+  compile 'com.orhanobut:logger:1.15'
+  compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.0@aar'
+  compile 'com.android.support:recyclerview-v7:25.0.0'
+  compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.1.3'
+  compile 'cn.bingoogolapple:bga-banner:2.1.5@aar'
+  compile 'com.google.dagger:dagger:2.0'
+}
