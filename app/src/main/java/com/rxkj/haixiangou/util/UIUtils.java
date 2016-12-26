@@ -18,6 +18,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.rxkj.haixiangou.app.MyApplication;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -30,58 +31,61 @@ import java.io.IOException;
  */
 public class UIUtils {
 
-  public static View inflate(Context context, int resId) {
-    return LayoutInflater.from(context).inflate(resId, null);
+  public static Context getContext() {
+    return MyApplication.getInstance();
   }
 
-  public static Resources getResources(Context context) {
-    return context.getResources();
+  public static View inflate(int resId) {
+    return LayoutInflater.from(getContext()).inflate(resId, null);
   }
 
-  public static String getString(Context context, int resId) {
-    return getResources(context).getString(resId);
+  public static Resources getResources() {
+    return getContext().getResources();
   }
 
-  public static String getString(Context context, int id, Object... formatArgs)
-      throws Resources.NotFoundException {
-    return getResources(context).getString(id, formatArgs);
+  public static String getString(int resId) {
+    return getResources().getString(resId);
+  }
+
+  public static String getString(int id, Object... formatArgs) throws Resources.NotFoundException {
+    return getResources().getString(id, formatArgs);
   }
 
   /** 获取文字数组 */
-  public static String[] getStringArray(Context context, int resId) {
-    return getResources(context).getStringArray(resId);
+  public static String[] getStringArray(int resId) {
+    return getResources().getStringArray(resId);
   }
 
   /** 获取dimen */
-  public static int getDimens(Context context, int resId) {
-    return getResources(context).getDimensionPixelSize(resId);
+  public static int getDimens(int resId) {
+    return getResources().getDimensionPixelSize(resId);
   }
 
   /** 获取drawable */
-  public static Drawable getDrawable(Context context, int resId) {
-    return getResources(context).getDrawable(resId);
+  public static Drawable getDrawable(int resId) {
+    return getResources().getDrawable(resId);
   }
 
   /** 获取颜色 */
-  public static int getColor(Context context, int resId) {
-    return getResources(context).getColor(resId);
+  public static int getColor(int resId) {
+    return getResources().getColor(resId);
   }
 
   /** 获取颜色选择器 */
-  public static ColorStateList getColorStateList(Context context, int resId) {
-    return getResources(context).getColorStateList(resId);
+  public static ColorStateList getColorStateList(int resId) {
+    return getResources().getColorStateList(resId);
   }
 
-  public static AssetFileDescriptor openRawResourceFd(Context context, int beep) {
-    return getResources(context).openRawResourceFd(beep);
+  public static AssetFileDescriptor openRawResourceFd(int beep) {
+    return getResources().openRawResourceFd(beep);
   }
 
-  public static AssetManager getAssets(Context context) {
-    return getResources(context).getAssets();
+  public static AssetManager getAssets() {
+    return getResources().getAssets();
   }
 
-  public static DisplayMetrics getDisplayMetrics(Context context) {
-    return getResources(context).getDisplayMetrics();
+  public static DisplayMetrics getDisplayMetrics() {
+    return getResources().getDisplayMetrics();
   }
 
   public static Bitmap toRoundCorner(Bitmap bitmap, float pixels) {
@@ -141,3 +145,4 @@ public class UIUtils {
     }
   }
 }
+

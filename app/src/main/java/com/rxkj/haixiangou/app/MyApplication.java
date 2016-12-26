@@ -1,6 +1,8 @@
 package com.rxkj.haixiangou.app;
 
 import android.app.Application;
+import com.rxkj.haixiangou.imageloader.ImageLoader;
+import com.rxkj.haixiangou.imageloader.ImageOptions;
 import com.rxkj.haixiangou.sharepref.BaseSharedPreferences;
 import com.rxkj.haixiangou.sharepref.ISharedPreferencesFactory;
 
@@ -17,6 +19,7 @@ public class MyApplication extends Application {
   @Override public void onCreate() {
     sInstance = this;
     mISharedPreferencesFactory = new BaseSharedPreferences(this);
+    ImageLoader.init(this,new ImageOptions());
     super.onCreate();
   }
 

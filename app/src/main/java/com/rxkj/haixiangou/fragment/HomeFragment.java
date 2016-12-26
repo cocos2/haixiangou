@@ -1,20 +1,22 @@
 package com.rxkj.haixiangou.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.bingoogolapple.bgabanner.BGABanner;
 import com.rxkj.haixiangou.R;
+import com.rxkj.haixiangou.card.BannerCard;
 import com.rxkj.haixiangou.interf.HomePageContract;
-import com.rxkj.haixiangou.model.BannerModel;
+import com.rxkj.haixiangou.model.HomePageModel;
 import com.rxkj.haixiangou.presenter.HomePagePresenter;
 import com.squareup.picasso.Picasso;
+import java.util.List;
 
 /**
  * 创建时间: 2016/12/18 23:21 <br>
@@ -23,7 +25,7 @@ import com.squareup.picasso.Picasso;
  */
 public class HomeFragment extends BaseFragment implements HomePageContract.View {
 
-  @Bind(R.id.rv_list) RecyclerView mRvList;
+  @Bind(R.id.root_content) LinearLayout mRootContent;
   private HomePageContract.Presenter mPresenter;
 
   public HomeFragment() {
@@ -94,8 +96,10 @@ public class HomeFragment extends BaseFragment implements HomePageContract.View 
 
   }
 
-  @Override public void showBanner(BannerModel bannerModel) {
-
+  @Override public void showBanner(List<HomePageModel.DataEntity.BannersEntity> banners) {
+    BannerCard bannerCard = new BannerCard(getContext());
+    bannerCard.initViewWithData(banners);
+    mRootContent.addView(bannerCard);
   }
 
   @Override public void showLoadingHomePageError() {

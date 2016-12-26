@@ -41,8 +41,10 @@ public class HomePagePresenter implements HomePageContract.Presenter, IBasePrese
           }
 
           @Override public void onNext(BaseResultData<HomePageModel> homePageModelBaseResultData) {
-            if (homePageModelBaseResultData.data != null) {
-
+            if (homePageModelBaseResultData.data != null
+                && homePageModelBaseResultData.data.getData() != null
+                && homePageModelBaseResultData.data.getData().getBanners() != null) {
+              mView.showBanner(homePageModelBaseResultData.data.getData().getBanners());
             }
           }
         });
@@ -50,7 +52,7 @@ public class HomePagePresenter implements HomePageContract.Presenter, IBasePrese
   }
 
   @Override public void subscribe() {
-   // getHomePageData();
+    getHomePageData();
   }
 
   @Override public void unsubscribe() {

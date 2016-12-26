@@ -1,8 +1,9 @@
 package com.rxkj.haixiangou.interf;
 
-import com.rxkj.haixiangou.model.BannerModel;
+import com.rxkj.haixiangou.model.HomePageModel;
 import com.rxkj.haixiangou.presenter.IBasePresenter;
 import com.rxkj.haixiangou.view.BaseView;
+import java.util.List;
 
 /**
  * 创建时间: 2016/12/18 23:21 <br>
@@ -14,7 +15,7 @@ public interface HomePageContract {
   interface View extends BaseView<Presenter> {
     void setProgressIndicator(boolean active);
 
-    void showBanner(BannerModel bannerModel);
+    void showBanner(List<HomePageModel.DataEntity.BannersEntity> banners);
 
     void showLoadingHomePageError();
   }

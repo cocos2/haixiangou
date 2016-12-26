@@ -73,4 +73,15 @@
     <item name="android:windowEnterAnimation">@anim/fade_in</item>
     <item name="android:windowExitAnimation">@anim/fade_out</item>
   </style>
+
+  <style name="tv_content_normal">
+    <item name="android:textSize">@dimen/dimen_16</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">@color/color_394043</item>
+  </style>
+
+  <style name="tv_white_normal" parent="@style/tv_content_normal">
+    <item name="android:textColor">@color/white</item>
+  </style>
 </resources>
