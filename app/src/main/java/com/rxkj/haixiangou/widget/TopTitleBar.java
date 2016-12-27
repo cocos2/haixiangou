@@ -59,7 +59,7 @@ public class TopTitleBar extends LinearLayout implements View.OnClickListener {
   private String mTitle = "";
 
   /** titlebar背景色 */
-  private int mBackground = 0xf9f9f9;
+  private int mBackground = R.color.title_bar_color;
 
   /** titlebar返回按钮图片 */
   private int mBackIconRes = R.mipmap.btn_back_normal;
@@ -83,7 +83,7 @@ public class TopTitleBar extends LinearLayout implements View.OnClickListener {
     TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.TopTitleBar);
     mTitle = typedArray.getString(R.styleable.TopTitleBar_tb_title);
     mBackground = typedArray.getColor(R.styleable.TopTitleBar_tb_background,
-        context.getResources().getColor(R.color.color_f9f9f9));
+        context.getResources().getColor(R.color.title_bar_color));
     mBackIconRes =
         typedArray.getResourceId(R.styleable.TopTitleBar_tb_back_icon, R.mipmap.btn_back_normal);
     mDividerVisible = typedArray.getBoolean(R.styleable.TopTitleBar_tb_divider_visible, true);

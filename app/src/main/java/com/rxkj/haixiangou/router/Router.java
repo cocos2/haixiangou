@@ -1,11 +1,11 @@
 package com.rxkj.haixiangou.router;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.rxkj.haixiangou.activity.BaseActivity;
 import com.rxkj.haixiangou.activity.MainActivity;
+import com.rxkj.haixiangou.app.MyApplication;
 import com.rxkj.haixiangou.util.ConstantUtil;
 import com.rxkj.haixiangou.util.LogUtil;
 import java.io.UnsupportedEncodingException;
@@ -128,11 +128,18 @@ public class Router {
     return strPage;
   }
 
-  public static void route(String url, String title, final Context context) {
+  public static void route(String url) {
+    route(url, null);
+  }
+
+  public static void route(String url, String title) {
     if (TextUtils.isEmpty(url)) {
       return;
     }
     Bundle bundle = new Bundle();
+    if (!TextUtils.isEmpty(title)) {
+      bundle.putString(ConstantUtil.PAGE_TITLE, title);
+    }
     Map<String, String> params = URLRequest(url);
     if (url.startsWith("http")) {
       bundle.putString(ConstantUtil.URL, url);
@@ -140,7 +147,8 @@ public class Router {
     } else if (url.startsWith("hxg://")) {
       switch (getSchemeWithoutParams(url)) {
         case HOME_PAGE:
-          ((BaseActivity) context).goToOthers(MainActivity.class);
+          ((BaseActivity) MyApplication.getInstance().getApplicationContext()).goToOthers(
+              MainActivity.class, bundle);
           break;
       }
     }

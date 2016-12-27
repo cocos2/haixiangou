@@ -16,9 +16,9 @@ public class BaseUriUtil {
   //public static int VERSION_URI_TYPE = BuildConfig.envType;
   public static int VERSION_URI_TYPE = VERSION_DEV;
 
-  private static final String API_RELEASE = "www.haixiango.com/";
+  private static final String API_RELEASE = "www.mocky.io/";
   private static final String API_QA = "172.30.16.222:7080/";
-  private static final String API_DEV = "172.30.16.222:9001/";
+  private static final String API_DEV = "www.mocky.io/";
 
   public static String getBaseUri() {
     String baseUri;

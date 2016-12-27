@@ -38,7 +38,7 @@ public class BaseActivity extends FragmentActivity implements IntentListener {
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    mTitleBarHeight = DensityUtil.px2dip(this, getResources().getDimension(R.dimen.title_height));
+    mTitleBarHeight = DensityUtil.px2dip(getResources().getDimension(R.dimen.title_height));
     AppManager.getInst().pushActivity(this);
     initTintTitleBar();
     mLoading = new LoadingProgressBar(this);

@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import cn.bingoogolapple.bgabanner.BGABanner;
 import com.rxkj.haixiangou.R;
 import com.rxkj.haixiangou.imageloader.ImageLoader;
@@ -18,7 +19,7 @@ import java.util.List;
  * 描述: 首页Banner卡片
  */
 
-public class BannerCard extends BaseViewCard<List<HomePageModel.DataEntity.BannersEntity>> {
+public class BannerCard extends BaseViewCard<List<HomePageModel.HomepageEntity.BannersEntity>> {
   @Bind(R.id.home_banner) BGABanner mHomeBanner;
 
   public BannerCard(Context context) {
@@ -34,28 +35,29 @@ public class BannerCard extends BaseViewCard<List<HomePageModel.DataEntity.Banne
   }
 
   @Override protected void onViewCreated(View mView) {
-
+    ButterKnife.bind(this);
   }
 
   @Override protected int onBindLayoutId() {
-    return R.layout.home_banner_layout;
+    return R.layout.card_banner_layout;
   }
 
-  @Override public void initViewWithData(List<HomePageModel.DataEntity.BannersEntity> list) {
+  @Override public void initViewWithData(List<HomePageModel.HomepageEntity.BannersEntity> list) {
     BGABanner.Adapter adapter =
-        new BGABanner.Adapter<ImageView, HomePageModel.DataEntity.BannersEntity>() {
+        new BGABanner.Adapter<ImageView, HomePageModel.HomepageEntity.BannersEntity>() {
           @Override public void fillBannerItem(BGABanner banner, ImageView itemView,
-              HomePageModel.DataEntity.BannersEntity model, int position) {
+              HomePageModel.HomepageEntity.BannersEntity model, int position) {
             ImageLoader.getInstance().loadImage(model.getUrl(), itemView);
           }
         };
+    mHomeBanner.setAutoPlayAble(true);
     mHomeBanner.setAdapter(adapter);
     mHomeBanner.setData(list, null);
     mHomeBanner.setDelegate(
-        new BGABanner.Delegate<ImageView, HomePageModel.DataEntity.BannersEntity>() {
+        new BGABanner.Delegate<ImageView, HomePageModel.HomepageEntity.BannersEntity>() {
           @Override public void onBannerItemClick(BGABanner banner, ImageView imageView,
-              HomePageModel.DataEntity.BannersEntity model, int position) {
-            Router.route(model.getScheme(), model.getName(), getContext());
+              HomePageModel.HomepageEntity.BannersEntity model, int position) {
+            Router.route(model.getScheme(), model.getName());
           }
         });
   }

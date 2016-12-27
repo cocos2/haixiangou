@@ -2,6 +2,7 @@ package com.rxkj.haixiangou.net.service;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.rxkj.haixiangou.net.interceptor.HeaderInterceptor;
+import com.rxkj.haixiangou.net.rxadapter.LinkRxCallAdapterFactory;
 import com.rxkj.haixiangou.util.BaseUriUtil;
 import com.rxkj.haixiangou.util.LogUtil;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +31,8 @@ public class APIService {
 
     //增加日志统计拦截器
     APIService.retrofitBuilder =
-        new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
+        new Retrofit.Builder().addCallAdapterFactory(LinkRxCallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .client(httpClientBuilder.build());
   }
 

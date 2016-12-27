@@ -11,22 +11,19 @@ import java.util.List;
 public class HomePageModel {
 
   /**
-   * request_id : 1234531
-   * error_code : 500
-   * error_msg : 服务器错误
    * sign : 123948219
-   * data : {"banners":[{"scheme":"Google","url":"http://www.google.com"},{"scheme":"Baidu","url":"http://www.baidu.com"},{"scheme":"SoSo","url":"http://www.SoSo.com"}],"channel":[{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价"}],"recommend":{"title":"个性推荐","recommend_list":[{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"}]},"ranking":{"title":"本周TOP10排行榜","ranking_list":[{"scheme":"Google","desc":"描述","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","desc":"描述","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","desc":"描述","icon_url":"http://www.google.com","name":"今日特价","price":"66"}]}}
+   * homepage : {"banners":[{"scheme":"Google","url":"http://www.google.com","name":"h5title"},{"scheme":"Baidu","url":"http://www.baidu.com","name":"h5title"},{"scheme":"SoSo","url":"http://www.SoSo.com","name":"h5title"}],"channel":[{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价"}],"recommend":{"title":"个性推荐","recommend_list":[{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"}]},"ranking":{"title":"本周TOP10排行榜","ranking_list":[{"scheme":"Google","desc":"描述","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","desc":"描述","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","desc":"描述","icon_url":"http://www.google.com","name":"今日特价","price":"66"}]}}
    */
 
   private String sign;
   /**
-   * banners : [{"scheme":"Google","url":"http://www.google.com"},{"scheme":"Baidu","url":"http://www.baidu.com"},{"scheme":"SoSo","url":"http://www.SoSo.com"}]
+   * banners : [{"scheme":"Google","url":"http://www.google.com","name":"h5title"},{"scheme":"Baidu","url":"http://www.baidu.com","name":"h5title"},{"scheme":"SoSo","url":"http://www.SoSo.com","name":"h5title"}]
    * channel : [{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价"}]
    * recommend : {"title":"个性推荐","recommend_list":[{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"}]}
    * ranking : {"title":"本周TOP10排行榜","ranking_list":[{"scheme":"Google","desc":"描述","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","desc":"描述","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","desc":"描述","icon_url":"http://www.google.com","name":"今日特价","price":"66"}]}
    */
 
-  private DataEntity data;
+  private HomepageEntity homepage;
 
   public String getSign() {
     return sign;
@@ -36,15 +33,15 @@ public class HomePageModel {
     this.sign = sign;
   }
 
-  public DataEntity getData() {
-    return data;
+  public HomepageEntity getHomepage() {
+    return homepage;
   }
 
-  public void setData(DataEntity data) {
-    this.data = data;
+  public void setHomepage(HomepageEntity homepage) {
+    this.homepage = homepage;
   }
 
-  public static class DataEntity {
+  public static class HomepageEntity {
     /**
      * title : 个性推荐
      * recommend_list : [{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"},{"scheme":"Google","icon_url":"http://www.google.com","name":"今日特价","price":"66"}]
@@ -60,6 +57,7 @@ public class HomePageModel {
     /**
      * scheme : Google
      * url : http://www.google.com
+     * name : h5title
      */
 
     private List<BannersEntity> banners;

@@ -15,7 +15,13 @@ public interface HomePageContract {
   interface View extends BaseView<Presenter> {
     void setProgressIndicator(boolean active);
 
-    void showBanner(List<HomePageModel.DataEntity.BannersEntity> banners);
+    void showBanner(List<HomePageModel.HomepageEntity.BannersEntity> banners);
+
+    void showChannel(List<HomePageModel.HomepageEntity.ChannelEntity> channels);
+
+    void showRecommend(HomePageModel.HomepageEntity.RecommendEntity recommend);
+
+    void showRanking(HomePageModel.HomepageEntity.RankingEntity ranking);
 
     void showLoadingHomePageError();
   }

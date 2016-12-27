@@ -13,6 +13,6 @@ import rx.Observable;
  */
 
 public interface NetApiService {
-  @GET("home/index") Observable<BaseResultData<HomePageModel>> getHomePage(
+  @GET("v2/58624fb60f000003061754fe") Observable<BaseResultData<HomePageModel>> getHomePage(
       @Query("sign") String sign);
 }

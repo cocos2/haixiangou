@@ -53,7 +53,7 @@
     <!-- 提示文案的文字颜色 -->
     <item name="banner_tipTextColor">@android:color/white</item>
     <!-- 加载网络数据时覆盖在BGABanner最上层的占位图 -->
-    <item name="banner_placeholderDrawable">@mipmap/holder</item>
+    <item name="banner_placeholderDrawable">@drawable/holder</item>
   </style>
 
   <style name="dialog_no_animation" parent="@android:style/Theme.Dialog">
@@ -84,4 +84,9 @@
   <style name="tv_white_normal" parent="@style/tv_content_normal">
     <item name="android:textColor">@color/white</item>
   </style>
+
+  <style name="tv_content_small" parent="@style/tv_content_normal">
+    <item name="android:textSize">@dimen/dimen_13</item>
+  </style>
+
 </resources>

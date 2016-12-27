@@ -10,4 +10,5 @@
   <color name="color_cccccc">#cccccc</color>
   <color name="title_bar_color">#53a0be</color>
   <color name="title_color">#FFFFFF</color>
+  <color name="gray_F7F7F9">#F7F7F9</color>
 </resources>

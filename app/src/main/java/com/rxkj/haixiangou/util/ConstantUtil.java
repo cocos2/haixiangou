@@ -24,4 +24,8 @@ public class ConstantUtil {
    * 选择图片标示
    */
   public static final int SELECT_PICS = 2;
+  /**
+   * 页面title
+   */
+  public static final String PAGE_TITLE = "page_title";
 }
