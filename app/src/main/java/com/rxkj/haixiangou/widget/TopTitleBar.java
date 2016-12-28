@@ -64,8 +64,11 @@ public class TopTitleBar extends LinearLayout implements View.OnClickListener {
   /** titlebar返回按钮图片 */
   private int mBackIconRes = R.mipmap.btn_back_normal;
 
-  /** titlebar返回按钮图片 */
+  /** titlebar分割线 */
   private boolean mDividerVisible = true;
+
+  /** titlebar返回按钮 */
+  private boolean mBackVisiable = true;
 
   /** action缓存列表,这里不用弱引用是因为action可能在函数体内部加入，退出函数作用域action就释放了 */
   private final List<Action> mActionList = new ArrayList<>();
@@ -87,6 +90,7 @@ public class TopTitleBar extends LinearLayout implements View.OnClickListener {
     mBackIconRes =
         typedArray.getResourceId(R.styleable.TopTitleBar_tb_back_icon, R.mipmap.btn_back_normal);
     mDividerVisible = typedArray.getBoolean(R.styleable.TopTitleBar_tb_divider_visible, true);
+    mBackVisiable = typedArray.getBoolean(R.styleable.TopTitleBar_tb_back_visible, true);
     typedArray.recycle();
     mContext = context;
     init(context);
@@ -160,6 +164,7 @@ public class TopTitleBar extends LinearLayout implements View.OnClickListener {
     setBackgroundColor(mBackground);
     setLeftImageResource(mBackIconRes);
     setDividerVisible(mDividerVisible);
+    setLeftVisible(mBackVisiable);
   }
 
   /**

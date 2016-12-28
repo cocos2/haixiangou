@@ -2,6 +2,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:background="@color/white"
   tools:context="com.rxkj.haixiangou.fragment.HomeFragment">
 
@@ -21,5 +22,6 @@
 
   <com.rxkj.haixiangou.widget.TopTitleBar
     android:id="@+id/title_bar"
+    app:tb_back_visible="false"
     style="@style/title_bar" />
 </FrameLayout>

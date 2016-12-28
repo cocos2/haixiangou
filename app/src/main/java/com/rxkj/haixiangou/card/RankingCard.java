@@ -48,7 +48,7 @@ public class RankingCard extends BaseViewCard<HomePageModel.HomepageEntity.Ranki
 
   @Override public void initViewWithData(final HomePageModel.HomepageEntity.RankingEntity data) {
     if (CollectionUtils.isNotEmpty(data.getRanking_list())) {
-      BaseQuickAdapter channelAdapter =
+      BaseQuickAdapter rnakingAdapter =
           new RnakingAdapter(R.layout.item_ranking, data.getRanking_list());
       mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
         @Override public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -66,7 +66,7 @@ public class RankingCard extends BaseViewCard<HomePageModel.HomepageEntity.Ranki
       });
       mRecyclerView.addItemDecoration(
           new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
-      mRecyclerView.setAdapter(channelAdapter);
+      mRecyclerView.setAdapter(rnakingAdapter);
     }
   }
 

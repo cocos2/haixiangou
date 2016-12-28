@@ -1,6 +1,6 @@
 package com.rxkj.haixiangou.interf;
 
-import com.rxkj.haixiangou.model.HomePageModel;
+import com.rxkj.haixiangou.model.ClassifyModel;
 import com.rxkj.haixiangou.presenter.IBasePresenter;
 import com.rxkj.haixiangou.view.BaseView;
 import java.util.List;
@@ -10,18 +10,12 @@ import java.util.List;
  * 作者: zhangbin <br>
  * 描述: 首页接口
  */
-public interface HomePageContract extends IBasePresenter{
+public interface ClassifyPageContract extends IBasePresenter{
 
   interface View extends BaseView<Presenter> {
     void setProgressIndicator(boolean active);
 
-    void showBanner(List<HomePageModel.HomepageEntity.BannersEntity> banners);
-
-    void showChannel(List<HomePageModel.HomepageEntity.ChannelEntity> channels);
-
-    void showRecommend(HomePageModel.HomepageEntity.RecommendEntity recommend);
-
-    void showRanking(HomePageModel.HomepageEntity.RankingEntity ranking);
+    void showRvClassify(List<ClassifyModel> classifyModels);
 
     void showLoadingHomePageError();
   }

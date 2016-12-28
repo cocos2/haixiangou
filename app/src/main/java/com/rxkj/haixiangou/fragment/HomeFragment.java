@@ -39,11 +39,6 @@ public class HomeFragment extends BaseFragment implements HomePageContract.View 
 
   }
 
-  public static HomeFragment newInstance(String param1, String param2) {
-    HomeFragment fragment = new HomeFragment();
-    return fragment;
-  }
-
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {
@@ -63,7 +58,6 @@ public class HomeFragment extends BaseFragment implements HomePageContract.View 
 
   private void initTitleBar() {
     mTitleBar.setImmersive(true);
-    mTitleBar.setLeftVisible(false);
     mTitleBar.setBackgroundColor(Color.TRANSPARENT);
     mTitleBar.setDividerVisible(false);
   }

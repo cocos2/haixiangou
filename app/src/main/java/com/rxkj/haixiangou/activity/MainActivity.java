@@ -36,8 +36,8 @@ public class MainActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
-    initBottomTab();
     initFragment();
+    initBottomTab();
   }
 
   private void initFragment() {
@@ -47,6 +47,12 @@ public class MainActivity extends BaseActivity {
     mFragments[1] = mFragmentManager.findFragmentById(R.id.frag_classify);
     mFragments[2] = mFragmentManager.findFragmentById(R.id.frag_shopping_cart);
     mFragments[3] = mFragmentManager.findFragmentById(R.id.frag_my);
+    mFragmentTransaction = mFragmentManager.beginTransaction();
+    mFragmentTransaction.show(mFragments[0])
+        .hide(mFragments[1])
+        .hide(mFragments[2])
+        .hide(mFragments[3])
+        .commit();
   }
 
   private void initBottomTab() {
@@ -62,7 +68,6 @@ public class MainActivity extends BaseActivity {
             .hide(mFragments[2])
             .hide(mFragments[3]);
         mFragmentTransaction.show(mFragments[position]).commit();
-
       }
 
       @Override public void onTabReselect(int position) {

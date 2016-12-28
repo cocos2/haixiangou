@@ -19,7 +19,7 @@ import rx.subscriptions.CompositeSubscription;
  * 描述: 大首页presenter
  */
 
-public class HomePagePresenter implements HomePageContract.Presenter, IBasePresenter {
+public class HomePagePresenter implements HomePageContract.Presenter {
   private HomePageContract.View mView;
   @NonNull private CompositeSubscription mSubscriptions;
 
