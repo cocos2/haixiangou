@@ -15,7 +15,7 @@ public interface ClassifyPageContract extends IBasePresenter{
   interface View extends BaseView<Presenter> {
     void setProgressIndicator(boolean active);
 
-    void showRvClassify(List<ClassifyModel> classifyModels);
+    void showRvClassify(List<ClassifyModel.ClassifyEntity> classifyModels);
 
     void showLoadingHomePageError();
   }

@@ -2,20 +2,24 @@ package com.rxkj.haixiangou.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.widget.FrameLayout;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.rxkj.haixiangou.R;
+import com.rxkj.haixiangou.fragment.ClassifyFragment;
+import com.rxkj.haixiangou.fragment.HomeFragment;
+import com.rxkj.haixiangou.fragment.MyFragment;
+import com.rxkj.haixiangou.fragment.ShoppingCartFragment;
 import com.rxkj.haixiangou.model.TabModel;
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
 
   @Bind(R.id.tab_layout) CommonTabLayout mTabLayout;
+  @Bind(R.id.fragment_container) FrameLayout mFragmentContainer;
 
   private String[] mTabs = { "首页", "消息", "联系人", "更多" };
   private int[] mIconUnselectIds = {
@@ -27,47 +31,29 @@ public class MainActivity extends BaseActivity {
       R.mipmap.tab_more_select
   };
   private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-
-  private Fragment[] mFragments;
-  private FragmentManager mFragmentManager;
-  private FragmentTransaction mFragmentTransaction;
+  private final ArrayList<Fragment> mFragments = new ArrayList<Fragment>();
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
-    initFragment();
-    initBottomTab();
+    initTab();
   }
 
-  private void initFragment() {
-    mFragments = new Fragment[4];
-    mFragmentManager = getSupportFragmentManager();
-    mFragments[0] = mFragmentManager.findFragmentById(R.id.frag_home);
-    mFragments[1] = mFragmentManager.findFragmentById(R.id.frag_classify);
-    mFragments[2] = mFragmentManager.findFragmentById(R.id.frag_shopping_cart);
-    mFragments[3] = mFragmentManager.findFragmentById(R.id.frag_my);
-    mFragmentTransaction = mFragmentManager.beginTransaction();
-    mFragmentTransaction.show(mFragments[0])
-        .hide(mFragments[1])
-        .hide(mFragments[2])
-        .hide(mFragments[3])
-        .commit();
-  }
+  private void initTab() {
+    mFragments.add(HomeFragment.newInstance());
+    mFragments.add(ClassifyFragment.newInstance());
+    mFragments.add(ShoppingCartFragment.newInstance());
+    mFragments.add(MyFragment.newInstance());
 
-  private void initBottomTab() {
     for (int i = 0; i < mTabs.length; i++) {
       mTabEntities.add(new TabModel(mTabs[i], mIconSelectIds[i], mIconUnselectIds[i]));
     }
-    mTabLayout.setTabData(mTabEntities);
+
+    mTabLayout.setTabData(mTabEntities, this, R.id.fragment_container, mFragments);
     mTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
       @Override public void onTabSelect(int position) {
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.hide(mFragments[0])
-            .hide(mFragments[1])
-            .hide(mFragments[2])
-            .hide(mFragments[3]);
-        mFragmentTransaction.show(mFragments[position]).commit();
+        mTabLayout.setCurrentTab(position);
       }
 
       @Override public void onTabReselect(int position) {

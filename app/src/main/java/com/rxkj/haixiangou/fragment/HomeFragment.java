@@ -38,7 +38,10 @@ public class HomeFragment extends BaseFragment implements HomePageContract.View 
   public HomeFragment() {
 
   }
-
+  public static HomeFragment newInstance() {
+    HomeFragment fragment = new HomeFragment();
+    return fragment;
+  }
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {

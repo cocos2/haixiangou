@@ -8,7 +8,6 @@ import com.rxkj.haixiangou.model.HomePageModel;
 import com.rxkj.haixiangou.net.service.APIService;
 import com.rxkj.haixiangou.net.service.NetApiService;
 import com.rxkj.haixiangou.util.CollectionUtils;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -30,10 +29,10 @@ public class HomePagePresenter implements HomePageContract.Presenter {
   }
 
   private void getHomePageData() {
-    Subscription mSubscription = APIService.createService(NetApiService.class)
+    mSubscriptions.add(APIService.createService(NetApiService.class)
         .getHomePage(null)
         .subscribeOn(Schedulers.io())
-    .observeOn(AndroidSchedulers.mainThread())
+        .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new CommonSubcriber<BaseResultData<HomePageModel>>() {
 
           @Override public void onError(Throwable e) {
@@ -43,7 +42,8 @@ public class HomePagePresenter implements HomePageContract.Presenter {
           @Override public void onNext(BaseResultData<HomePageModel> homePageModelBaseResultData) {
             if (homePageModelBaseResultData.data != null
                 && homePageModelBaseResultData.data.getHomepage() != null) {
-              HomePageModel.HomepageEntity dataEntity = homePageModelBaseResultData.data.getHomepage();
+              HomePageModel.HomepageEntity dataEntity =
+                  homePageModelBaseResultData.data.getHomepage();
               if (CollectionUtils.isNotEmpty(dataEntity.getBanners())) {
                 mView.showBanner(homePageModelBaseResultData.data.getHomepage().getBanners());
               }
@@ -58,8 +58,7 @@ public class HomePagePresenter implements HomePageContract.Presenter {
               }
             }
           }
-        });
-    mSubscriptions.add(mSubscription);
+        }));
   }
 
   @Override public void subscribe() {

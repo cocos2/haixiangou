@@ -15,7 +15,10 @@ public class MyFragment extends BaseFragment {
 
   public MyFragment() {
   }
-
+  public static MyFragment newInstance() {
+    MyFragment fragment = new MyFragment();
+    return fragment;
+  }
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {

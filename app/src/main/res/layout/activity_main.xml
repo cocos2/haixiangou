@@ -1,34 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tl="http://schemas.android.com/apk/res-auto"
-  android:id="@+id/activity_main"
   android:layout_width="match_parent"
+  android:orientation="vertical"
   android:layout_height="match_parent">
 
-  <fragment
-    android:id="@+id/frag_home"
-    android:name="com.rxkj.haixiangou.fragment.HomeFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/tab_layout" />
-
-  <fragment
-    android:id="@+id/frag_classify"
-    android:name="com.rxkj.haixiangou.fragment.ClassifyFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/tab_layout" />
-
-  <fragment
-    android:id="@+id/frag_shopping_cart"
-    android:name="com.rxkj.haixiangou.fragment.ShoppingCartFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/tab_layout" />
-
-  <fragment
-    android:id="@+id/frag_my"
-    android:name="com.rxkj.haixiangou.fragment.MyFragment"
+  <FrameLayout
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_above="@+id/tab_layout" />

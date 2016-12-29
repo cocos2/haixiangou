@@ -1,6 +1,7 @@
 package com.rxkj.haixiangou.net.service;
 
 import com.rxkj.haixiangou.model.BaseResultData;
+import com.rxkj.haixiangou.model.ClassifyModel;
 import com.rxkj.haixiangou.model.HomePageModel;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -14,5 +15,7 @@ import rx.Observable;
 
 public interface NetApiService {
   @GET("v2/58624fb60f000003061754fe") Observable<BaseResultData<HomePageModel>> getHomePage(
+      @Query("sign") String sign);
+  @GET("v2/58638891100000c900b488df") Observable<BaseResultData<ClassifyModel>> getClassifyData(
       @Query("sign") String sign);
 }

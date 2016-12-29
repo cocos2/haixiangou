@@ -10,7 +10,7 @@ import java.util.List;
  * 作者: zhangbin <br>
  * 描述: 首页接口
  */
-public interface HomePageContract extends IBasePresenter{
+public interface HomePageContract {
 
   interface View extends BaseView<Presenter> {
     void setProgressIndicator(boolean active);
